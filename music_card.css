@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--cdbg-color);
+}
+
+:root {
+    --cdbg-color: #110f0f;
+    --main-color: #2ef5ff;
+    --cdText-color: #ffffff;
+    --cdShadow-color: #ebe2e2;
+    --txShadow-color: #302e2e;
+    --card-color: #fd660f;
+
+    --card-shadow: 0.5rem 0.5rem 1rem var(--cdShadow-color);
+
+    --text-shadow: 2px 2px 2px var(--txShadow-color);
+
+    --dark-filter: brightness(70%);
+}
+
+.cardbg {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('bg4.jpg');
+    background-repeat: repeat;
+    /* background-position: center; */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: brightness(70%);
+    background-position: 0% 0%;
+}
+.bg-scrol{
+    animation: bg-scrol 30s linear;
+}
+
+@keyframes bg-scrol {
+    from{
+        background-position: 0% 0%;
+    }
+    to{
+        background-position: 0% 100%;
+    }
+    
+}
+
+.card {
+    padding: 2%;
+    
+    height: 17rem;
+    width: 30rem;
+    border-radius: 2rem;
+    box-shadow: var(--card-shadow);
+    /* opacity: .5; */
+    backdrop-filter: blur(10px);
+    border: .1rem  solid var(--cdText-color);
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0), rgba(93, 196, 255, 0.596));
+    
+}
+
+.head {
+    padding: 1% 0 0 1%;
+    /* background: #be3030; */
+    /* position: absolute; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#cdTitle {
+    font-size: 1.1rem;
+    padding-left: 5%;
+    color: var(--cdText-color);
+}
+
+.head h3{
+    color: var(--cdText-color);
+    float: inline-end;
+    text-decoration: underline;
+}
+
+#pic {
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.rotate{
+    animation: rot 5s linear infinite;
+}
+@keyframes rot {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}
+
+.song-details{
+    margin-top: 5%;
+    padding-left: 2%;
+    text-shadow: var(--text-shadow);
+}
+.song-details h2,
+.song-details h3{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: var(--cdText-color);
+    font-size: 1.7rem;
+}
+.song-details h3{
+    margin-top: 5%;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-transform: capitalize;
+}
+
+
+.player {
+    /* background: red; */
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.timer {
+    width: 100%;
+    /* background: #ffffff; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.timer span {
+    color: var(--cdText-color);
+
+}
+
+.progress-area {
+    height: 0.3rem;
+    width: 100%;
+    border-radius: 100px;
+    background: var(--cdbg-color);
+
+}
+
+.progress-area .progress-bar{
+    position: relative;
+    width: 100%;
+    height:90%;
+    border-radius: 50px;
+    /* background: linear-gradient(90deg, red 0%, --main-color 80%); */
+    background: var(--main-color);
+    box-shadow: var(--text-shadow);
+}
+.p-bar{
+    animation: progress 30s linear ;
+}
+
+@keyframes progress {
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 100%;
+    }
+}
+
+.btns {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.btns i {
+    cursor: pointer;
+
+    color: var(--cdText-color);
+    margin-top: 3%;
+    /* border: 2px solid #333; */
+    border-radius: 50%;
+    text-shadow: var(--text-shadow);
+    box-shadow: inset var(--card-shadow);
+}

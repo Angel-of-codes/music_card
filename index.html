@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="music_card.css">
+    <!-- icons css -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music_card</title>
+</head>
+
+<body>
+    <section class="cardbg">
+        <div class="card">
+            <div class="head">
+                <div class="logo">
+                    <img src="spotify.png" class="" alt="" id="pic">
+                    <h2 id="cdTitle">SPOTIFY</h2>
+                </div>
+                <h3>AngelofCodes</h3>
+            </div>
+            <div class="song-details">
+                <h2 class="song-name">HA HASI BAN GAYE</h2>
+                <h3 class="song-lyrics"></h3>
+            </div>
+            <div class="player">
+                <!-- <input type="range" min="0" max="100" id="slider" value="0"> -->
+                <div class="timer">
+                    <span class="current-time">0:<span id="start_time">0</span></span>
+                    <span class="max-time">0:30</span>
+                </div>
+                <div class="progress-area">
+                    <div class="progress-bar">
+                        <!-- <audio id="main-audio" src=""></audio> -->
+                    </div>
+                </div>
+                <div class="btns">
+                    <i class='bx bx-skip-previous'></i>
+                    <i id="onoof" class='bx bx-pause bx-play'></i>
+                    <i class='bx bx-skip-next'></i>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script>
+        let btnplay = document.querySelector('#onoof');
+        let cardbg = document.querySelector('.cardbg');
+        let progress_bar = document.querySelector('.progress-bar');
+        var start_time = document.querySelector('#start_time');
+        let rot = document.querySelector('#pic');
+        // song path
+        var audio = null;
+        var pauseSong = true;
+        // song lyrics 
+        const lyrics = ['tu khwab hai agr koi', 'chahu kabhi tute na', 'ruthe bhale zindagi', 'tu par kabhi ruthe na', 'jhutha lage jahan', 'tum sahi ban gaye', 'din rat kya subah', 'tum sabhi ban gaye', 'ha hasi ban gye ', ' ha nami ban gye '];
+        const s_l = document.querySelector('.song-lyrics');
+
+        var flag = 0;
+        function song() {
+            var l = 0;
+            s_l.innerHTML = lyrics[l];
+            time_id = setInterval(song_lyrics, 3150);
+            l = 1;
+            function song_lyrics() {
+                s_l.innerHTML = lyrics[l];
+                l++;
+                if (l == lyrics.length) {
+                    clearInterval(time_id);
+                }
+            }
+        }
+        var t = 1;
+        function timer() {
+            start_time.innerHTML = t;
+            t++;
+            if(t == 31){
+                clearInterval(timer_id);
+                btnplay.classList.toggle('bx-play');
+                rot.classList.remove('rotate');
+                pauseSong = true;
+                cardbg.classList.toggle('bg-scrol');
+                progress_bar.classList.toggle('p-bar');
+            }
+        }
+        
+        btnplay.onclick = () => {
+            btnplay.classList.toggle('bx-play');
+            rot.classList.toggle('rotate');
+            cardbg.classList.toggle('bg-scrol');
+            progress_bar.classList.toggle('p-bar');
+
+            if (flag == 0) {
+                flag = 1;
+                song();
+            }
+            else {
+                flag = 0;
+                clearInterval(time_id);
+            }
+            
+            if(pauseSong == false){
+                pauseSong = true;
+                audio.pause();
+                clearInterval(timer_id);
+            }
+            else{
+                pauseSong = false;
+                audio = new Audio('ha_hasi_ban_gaye.mp3');
+                timer_id = setInterval(timer,1000);
+                t = 1;
+                audio.play();
+            }
+
+        };
+    </script>
+</body>
+
+</html>
